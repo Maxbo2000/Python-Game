@@ -6,20 +6,20 @@ class MoveableObject(metaclass=ABCMeta):
 
     @property
     @abstractmethod
-    def _Health(self): pass
+    def __Health(self): pass
 
     @property
     @abstractmethod
-    def _Name(self): pass
+    def __Name(self): pass
 
     @property
     @abstractmethod
-    def _WalkSpeed(self): pass
+    def __WalkSpeed(self): pass
 
     @property
     @abstractmethod
-    def _HitBox_X(self): pass
+    def __HitBox_X(self): pass
 
     @property
     @abstractmethod
-    def _HitBox_Y(self): pass
+    def __HitBox_Y(self): pass
