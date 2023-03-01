@@ -1,7 +1,8 @@
 from GameObjects.MoveableObject import MoveableObject
 
 class Player(MoveableObject):
-    super().__init__(100, "test", 1.00, 10, 10, 10, 10, 0, 0)
-    sprite: None
-    inv: None
+    def __init__(self, health=int, name=str, walkspeed=float, hitbox_x=int, hitbox_y=int, height=int, width=int, x=int, y=int):
+        super().__init__(health, name, walkspeed, hitbox_x, hitbox_y, height, width, x, y)
+        sprite: None
+        inv: None
 
