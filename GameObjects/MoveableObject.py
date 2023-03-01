@@ -28,6 +28,8 @@ class MoveableObject:
     def getWalkSpeed(self): return self.__WalkSpeed
     def getPosX(self): return self.__Pos_X
     def getPosY(self): return self.__Pos_Y
+    def getHitBox_H(self): return self.__HitBox_H
+    def getHitBox_W(self): return self.__HitBox_W
     def setHealth(self, value): self.__Health = value
     def setName(self, value): self.__Name = value
     def setWalkSpeed(self, value): self.__WalkSpeed = value
