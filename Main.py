@@ -1,12 +1,15 @@
 import pygame
 import sys
+
+from GameObjects.Monster import Monster
 from GameObjects.Player import Player
 
 if __name__ == '__main__':
     print('PyCharm')
 
 pygame.init()
-player = Player(100, "test", 1.00, 10, 10, 40, 80, 0, 0)
+player = Player(100, "test", 2, 40, 80, 0, 0)
+monster = Monster(100, "test_Monster", 1, 40, 80, 300, 300)
 pygame.display.set_caption("Humans vs Monster")
 screen = pygame.display.set_mode([600, 600])
 
@@ -33,6 +36,8 @@ while True:
     # Bildschirm-Update
     screen.fill((0, 0, 0))
     pygame.draw.rect(screen, (255, 255, 0), (player.getPosX(), player.getPosY(), player.getHitBox_H(), player.getHitBox_W()))
+    pygame.draw.rect(screen, (255, 0, 0), (monster.getPosX(), monster.getPosY(), monster.getHitBox_H(), monster.getHitBox_W()))
+    monster.move(player.getPosX(), player.getPosY())
     pygame.display.update()
 
     # Framerate-Limit
