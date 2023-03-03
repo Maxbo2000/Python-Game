@@ -32,6 +32,8 @@ while True:
         player.move_up()
     if keys[pygame.K_DOWN]:
         player.move_down()
+    if keys[pygame.K_y]:
+        monster.move(player.getPosX(), player.getPosY())
 
     # Bildschirm-Update
     screen.fill((0, 0, 0))
