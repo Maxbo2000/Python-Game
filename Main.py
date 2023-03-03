@@ -32,7 +32,7 @@ while True:
 
     # Bildschirm-Update
     screen.fill((0, 0, 0))
-    pygame.draw.rect(screen, (255, 255, 0), (player.getPosY(), player.getPosX(), player.getHitBox_H(), player.getHitBox_W()))
+    pygame.draw.rect(screen, (255, 255, 0), (player.getPosX(), player.getPosY(), player.getHitBox_H(), player.getHitBox_W()))
     pygame.display.update()
 
     # Framerate-Limit

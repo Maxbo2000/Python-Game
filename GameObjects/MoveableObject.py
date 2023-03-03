@@ -15,7 +15,7 @@ class MoveableObject:
 
     __Health: int
     __Name: str
-    __WalkSpeed: float
+    __WalkSpeed: int
     __Pos_X: int
     __Pos_Y: int
     __HitBox_X: int
