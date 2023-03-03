@@ -2,12 +2,10 @@ from pygame import Rect
 
 
 class MoveableObject:
-    def __init__(self, health, name, walkspeed, hitbox_x, hitbox_y, height, width, x, y):
+    def __init__(self, health, name, walkspeed, height, width, x, y):
         self.__Health = health
         self.__Name = name
         self.__WalkSpeed = walkspeed
-        self.__HitBox_X = hitbox_x
-        self.__HitBox_Y = hitbox_y
         self.__HitBox_H = height
         self.__HitBox_W = width
         self.__Pos_X = x
@@ -35,8 +33,6 @@ class MoveableObject:
     def setWalkSpeed(self, value): self.__WalkSpeed = value
     def setPosX(self, value): self.__Pos_X = value
     def setPosY(self, value): self.__Pos_Y = value
-    def setHitboxX(self, value): self.__HitBox_X = value
-    def setHitBoxY(self, value): self.__HitBox_Y = value
 
     def makeHitBox(self):
         hitbox = Rect(self.__HitBox_X, self.__HitBox_Y, self.__HitBox_H, self.__HitBox_W)
