@@ -5,9 +5,13 @@ from GameObjects.MoveableObject import MoveableObject
 class Player(MoveableObject):
     def __init__(self, health=int, name=str, walkspeed=int, height=int, width=int, x=int, y=int):
         super().__init__(health, name, walkspeed, height, width, x, y)
-        sprite: None
+        self.sprite = pygame.image.load("Graphic/human.png")
+        self.rect = self.sprite.get_rect()
         inv: None
 
+    def draw(self, screen):
+        # Zeichnen Sie das Sprite auf dem Bildschirm an der aktuellen Position des Spielers
+        screen.blit(self.sprite, self.rect)
     def handle_keys(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
