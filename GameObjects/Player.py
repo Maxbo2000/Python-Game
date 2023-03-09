@@ -2,25 +2,42 @@ import pygame
 
 from GameObjects.MoveableObject import MoveableObject
 
+
 class Player(MoveableObject):
-    def __init__(self, health=int, name=str, walkspeed=int, height=int, width=int, x=int, y=int):
-        super().__init__(health, name, walkspeed, height, width, x, y)
-        self.sprite = pygame.image.load("Graphic/human.png")
+    useMirrored = bool
+    __SpriteHeight = 60
+    __SpriteWidth = 60
+
+    def __init__(self, health=int, name=str, walkspeed=int, x=int, y=int):
+        super().__init__(health, name, walkspeed, x, y)
+        self.sprite = pygame.transform.scale(pygame.image.load("Graphic/human.png"), (self.__SpriteHeight, self.__SpriteWidth))
+        self.spriteMirrored = pygame.transform.flip(self.sprite, True, False)
         self.rect = self.sprite.get_rect()
-        inv: None
+
+    def get_height(self):
+        return self.rect.height
+
+    def get_width(self):
+        return self.rect.width
 
     def draw(self, screen):
-        # Zeichnen Sie das Sprite auf dem Bildschirm an der aktuellen Position des Spielers
-        screen.blit(self.sprite, self.rect)
+        self.setHitbox(pygame.Rect(self.getPosX(), self.getPosY(), self.__SpriteHeight, self.__SpriteWidth))
+        if (self.useMirrored == True):
+            screen.blit(self.spriteMirrored, (self.getPosX(), self.getPosY()))
+            return
+        screen.blit(self.sprite, (self.getPosX(), self.getPosY()))
+
     def handle_keys(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]:
+        if keys[pygame.K_a]:
+            self.useMirrored = True
             self.move_left()
-        if keys[pygame.K_RIGHT]:
+        if keys[pygame.K_d]:
+            self.useMirrored = False
             self.move_right()
-        if keys[pygame.K_UP]:
+        if keys[pygame.K_w]:
             self.move_up()
-        if keys[pygame.K_DOWN]:
+        if keys[pygame.K_s]:
             self.move_down()
 
     def move_left(self):
@@ -34,4 +51,3 @@ class Player(MoveableObject):
 
     def move_down(self):
         self.setPosY(self.getPosY() + self.getWalkSpeed())
-
