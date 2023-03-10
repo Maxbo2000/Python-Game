@@ -10,8 +10,7 @@ class Player(MoveableObject):
 
     def __init__(self, health=int, name=str, walkspeed=int, x=int, y=int):
         super().__init__(health, name, walkspeed, x, y)
-        self.sprite = pygame.transform.scale(pygame.image.load("Graphic/human.png"),
-                                             (self.__SpriteHeight, self.__SpriteWidth))
+        self.sprite = pygame.transform.scale(pygame.image.load("Graphic/human.png"), (self.__SpriteHeight, self.__SpriteWidth))
         self.spriteMirrored = pygame.transform.flip(self.sprite, True, False)
         self.rect = self.sprite.get_rect()
 
@@ -23,7 +22,7 @@ class Player(MoveableObject):
 
     def draw(self, screen):
         self.setHitbox(pygame.Rect(self.getPosX(), self.getPosY(), self.__SpriteHeight, self.__SpriteWidth))
-        if self.useMirrored:
+        if (self.useMirrored == True):
             screen.blit(self.spriteMirrored, (self.getPosX(), self.getPosY()))
             return
         screen.blit(self.sprite, (self.getPosX(), self.getPosY()))
